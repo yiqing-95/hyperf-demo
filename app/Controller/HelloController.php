@@ -56,4 +56,17 @@ class HelloController extends AbstractController
         // 满足某种状态或者条件 咎抛个异常
         throw new FooException('Foo Exception...', 800);
     }
+
+    public function error()
+    {
+        try {
+            $a = [];
+            var_dump($a[1]);
+        } catch (\Throwable $throwable) {
+            var_dump(get_class($throwable), $throwable->getMessage());
+        }
+
+// string(14) "ErrorException"
+// string(19) "Undefined offset: 1"
+    }
 }
