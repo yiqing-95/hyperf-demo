@@ -18,6 +18,10 @@ use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
+
+use Hyperf\Paginator\Paginator;
+use Hyperf\Utils\Collection;
+
 #[Controller]
 class UserController extends AbstractController
 {
@@ -36,8 +40,23 @@ class UserController extends AbstractController
     public function index(RequestInterface $request)
     {
         // 从请求中获得 id 参数
-        $id = $request->input('id', 1);
-        return (string)$id;
+//        $id = $request->input('id', 1);
+//        return (string)$id;
+
+        $currentPage = (int) $request->input('page', 1);
+        $perPage = (int) $request->input('per_page', 2);
+
+        // 这里根据 $currentPage 和 $perPage 进行数据查询，以下使用 Collection 代替
+        $collection = new Collection([
+            ['id' => 1, 'name' => 'Tom'],
+            ['id' => 2, 'name' => 'Sam'],
+            ['id' => 3, 'name' => 'Tim'],
+            ['id' => 4, 'name' => 'Joe'],
+        ]);
+
+        $users = array_values($collection->forPage($currentPage, $perPage)->toArray());
+
+        return new Paginator($users, $perPage, $currentPage);
     }
 
     #[RequestMapping(path: "info", methods: "get")]
