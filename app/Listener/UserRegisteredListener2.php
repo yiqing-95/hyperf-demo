@@ -7,7 +7,7 @@ use Hyperf\Event\Annotation\Listener;
 use Hyperf\Event\Contract\ListenerInterface;
 
 #[Listener]
-class UserRegisteredListener implements ListenerInterface
+class UserRegisteredListener2 implements ListenerInterface
 {
     public function listen(): array
     {

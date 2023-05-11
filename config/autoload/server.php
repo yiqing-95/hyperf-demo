@@ -25,6 +25,9 @@ return [
             'callbacks' => [
                 Event::ON_REQUEST => [Hyperf\HttpServer\Server::class, 'onRequest'],
             ],
+            // 静态资源
+            'document_root' => BASE_PATH . '/public',
+            'enable_static_handler' => true,
         ],
     ],
     'settings' => [

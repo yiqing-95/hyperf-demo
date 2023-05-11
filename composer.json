@@ -23,9 +23,15 @@
         "hyperf/http-server": "~3.0.0",
         "hyperf/logger": "~3.0.0",
         "hyperf/memory": "~3.0.0",
-        "hyperf/paginator": "*",
+        "hyperf/paginator": "^3.0",
         "hyperf/process": "~3.0.0",
-        "hyperf/redis": "~3.0.0"
+        "hyperf/redis": "~3.0.0",
+        "hyperf/view": "^3.0",
+        "hyperf/view-engine": "^3.0",
+        "league/plates": "^3.5",
+        "smarty/smarty": "^4.3",
+        "sy-records/think-template": "^2.0",
+        "twig/twig": "^3.6"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
